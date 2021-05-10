@@ -1,13 +1,16 @@
 language: ruby
 rbenv:
-- 2.5.3
+  - 2.5.3
 addons:
   postgresql: 9.6
 script:
-- bundle exec rails db:{create,migrate} RAILS_ENV=test
-- bundle exec rspec
+  - bundle exec rails db:{create,migrate} RAILS_ENV=test
+  - bundle exec rspec
 deploy:
   provider: heroku
   api_key:
-  app:
+    secure: gGjMiJ3ZXDUG1j4YOtT48GqTdIpgq6dWIy/kzUnKOT2rbfruWiipihh5oy6fMAkIkgFnoenHi8kQLzWVyZFYefcQPmfp5IGinEMC+apI/MhUKa75x7EyQHk0wWLYdQDNZRTNtrbNmEZo4XeOGCZLIGo2PJodU2YbpHvjMEGaG9qi5YLT7FDzZr3DnbkxL4/3Z0JhtL2rgBPpiHh+vpwemIBEu4zvYvzoY/Yj71HRf/rTFGHNxn2InDR/qBixvBvEg1SsNClM+2/vu8qSJ5XJJpwvW7QJPZwtrwLdIWEGG4GorN7M+yQtpZdgnyMDBIfiRMJjwDQimpfrjwLjzP3qT/y53ZwgqAOIMIK7F+ZPxN0+lqhPRpMtrTLWP6VPg2cz4kZzfyt6KJ87IMFH0mO+02F6JhvOA9ruk5FIHBQ3Lp/d4/pTKJr9Wa937+pzrwoHDwPwPRRjwvACJmM9WtnERjOj0fvUcM79n6wzkfzrdPC7vEF5WsS3hr3Z/Id4ISBHtIqeL73Xhlw2HT1BHIPs3swgG6Aaw/EkI0IXqVe8FfkjBjwilrn9WFbel2CfFWu/1dlDFsP4wr2v7BlXaNyqT67q5tTpnfvJVE0WI7p1fz4ggN5vGz7SOC8YYFVVA1VKal3aF20Gx/vWfpL8Db7ndMAP6Y6JVLoB6BPKImgDGC0=
+  app: gho-viewing-party
+  on:
+    repo: georgehwho/viewing_party
   run: rails db:migrate
