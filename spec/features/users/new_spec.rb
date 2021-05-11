@@ -19,4 +19,26 @@ describe 'New User Sign Up Page' do
       expect(page).to have_button("Register")
     end
   end
+
+  context 'You register for an account' do
+    before {
+      visit signup_path
+    }
+    it 'can register a new account' do
+      expect(current_path).to eq('/signup')
+
+      fill_in 'user[email]', with: 'kon@test.com'
+      fill_in 'user[password]', with: 'boomshakalaka'
+      fill_in 'user[password_confirmation]', with: 'boomshakalaka'
+
+      click_on "Register"
+
+      expect(current_path).to eq(dashboard_path)
+
+      new_user = User.last
+
+      expect(page).to have_content("Welcome, #{new_user.email}")
+      expect(new_user.email).to eq('kon@test.com')
+    end
+  end
 end

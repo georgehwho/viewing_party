@@ -3,7 +3,7 @@
 
   <p>Please Register for an Account</p>
 
-  <%= form_with model: @user, url: signup_path do |form| %>
+  <%= form_with model: @user, url: signup_path, local: true do |form| %>
     <div class="form_container">
       <%= form.label :email %>
       <%= form.text_field :email %>
