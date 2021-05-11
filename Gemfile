@@ -29,6 +29,8 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers'
+  gem 'orderly'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
@@ -36,3 +38,9 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'factory_bot_rails'
+gem 'faker'
+gem 'faraday'
+gem 'json'
+gem 'bcrypt'
