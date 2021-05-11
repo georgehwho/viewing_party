@@ -2,8 +2,8 @@
   <h1>Welcome to Viewing Party</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus animi commodi cum, nesciunt praesentium voluptates omnis illum beatae accusamus in odit hic, eius quis magnam facere sed, eum repudiandae saepe.</p>
 
-    <%= form_with model: User.new, url: signup_path do |form| %>
-  <div class="form_container">
+  <%= form_with model: User.new, url: signup_path do |form| %>
+    <div class="form_container">
       <%= form.label :email %>
       <%= form.text_field :email %>
 
@@ -14,6 +14,6 @@
       <%= form.password_field :password_confirmation %>
 
       <%= form.submit "Register" %>
-  </div>
-    <% end %>
+    </div>
+  <% end %>
 </div>
