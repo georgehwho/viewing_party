@@ -25,5 +25,16 @@ describe 'Sessions New Page' do
 
       expect(page).to have_content('Your email or password are incorrect')
     end
+
+    it 'Redirects user to dashboard upon appropriate sign-in' do
+      user = User.create!(email: "edgelord9000@test.com", password: "lmaonnaise")
+
+      fill_in 'email', with: user.email
+      fill_in 'password', with: user.password
+
+      expect(current_path).to eq(dashboard_path)
+
+      expect(page).to have_content("Welcome #{user.email}!")
+    end
   end
 end
