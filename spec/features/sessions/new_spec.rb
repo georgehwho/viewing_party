@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Welcome Index Page' do
+describe 'Sessions New Page' do
   context 'You arrive on the page' do
     before {
       visit root_path
@@ -18,6 +18,12 @@ describe 'Welcome Index Page' do
     end
     it 'Has a link to register for the application' do
       expect(page).to have_link("New to Viewing Party? Register Here")
+    end
+
+    it 'Has a sad path for when email or password is incorrect' do
+      click_on "Sign In"
+
+      expect(page).to have_content('Your email or password are incorrect')
     end
   end
 end
