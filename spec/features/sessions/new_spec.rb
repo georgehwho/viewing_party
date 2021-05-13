@@ -31,6 +31,7 @@ describe 'Sessions New Page' do
 
       fill_in 'email', with: user.email
       fill_in 'password', with: user.password
+      click_on "Sign In"
 
       expect(current_path).to eq(dashboard_path)
 
