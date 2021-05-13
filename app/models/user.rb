@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many :friendships, class_name: :Friendship, dependent: :destroy
   has_many :friends, through: :friendships
 
-  has_many :parties
+  has_many :parties, dependent: :destroy
 end
