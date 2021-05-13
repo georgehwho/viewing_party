@@ -37,7 +37,7 @@ describe 'New User Sign Up Page' do
 
       new_user = User.last
 
-      expect(page).to have_content("Welcome, #{new_user.email}")
+      expect(page).to have_content("Welcome #{new_user.email}!")
       expect(new_user.email).to eq('kon@test.com')
     end
   end
