@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
-  def new; end
+  skip_before_action :authorize, only: [:new, :create]
+
+  def new
+    redirect_to dashboard_path if current_user
+  end
 
   def create
     user = User.find_by(email: params[:email])
