@@ -54,20 +54,22 @@ describe 'Sessions New Page' do
       end
     end
 
-    it 'Sad Path: Empty form submission flashes error' do
-      click_on "Sign In"
+    context 'Sad Path: Incorrect Logins' do
+      it 'Empty form submission flashes error' do
+        click_on "Sign In"
 
-      expect(current_path).to eq(login_path)
-      expect(page).to have_content('Your email or password are incorrect')
-    end
+        expect(current_path).to eq(login_path)
+        expect(page).to have_content('Your email or password are incorrect')
+      end
 
-    it 'Sad Path: Incorrect login flashes error' do
-      fill_in 'email', with: user.email
-      fill_in 'password', with: 'wrong password'
-      click_on "Sign In"
+      it 'Incorrect login flashes error' do
+        fill_in 'email', with: user.email
+        fill_in 'password', with: 'wrong password'
+        click_on "Sign In"
 
-      expect(current_path).to eq(login_path)
-      expect(page).to have_content('Your email or password are incorrect')
+        expect(current_path).to eq(login_path)
+        expect(page).to have_content('Your email or password are incorrect')
+      end
     end
   end
 end
