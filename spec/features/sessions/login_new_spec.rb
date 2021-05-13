@@ -2,18 +2,15 @@ require 'rails_helper'
 
 describe 'Sessions New Page' do
   context 'You arrive on the page' do
-    before {
-      visit root_path
-    }
-    context 'Default page loads' do
-      it 'Welcomes you to the site' do
-        expect(page).to have_content("Welcome to The Viewing Party")
-        expect(page).to have_content("An application to explore movies and create a viewing party event for you and your friends to watch a movie together.")
-        expect(page).to have_field("email")
-        expect(page).to have_field("password")
-        expect(page).to have_button("Sign In")
-        expect(page).to have_link("New to Viewing Party? Register Here")
-      end
+    before { visit root_path }
+
+    it 'Loads the default page' do
+      expect(page).to have_content("Welcome to The Viewing Party")
+      expect(page).to have_content("An application to explore movies and create a viewing party event for you and your friends to watch a movie together.")
+      expect(page).to have_field("email")
+      expect(page).to have_field("password")
+      expect(page).to have_button("Sign In")
+      expect(page).to have_link("New to Viewing Party? Register Here")
     end
 
     context 'You try to login' do

@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
   private
 
   def authorize
-    unless current_user
-      redirect_to root_path, notice: "Please Log In"
-    end
+    redirect_to root_path, notice: 'Please Log In' unless current_user
   end
 end
