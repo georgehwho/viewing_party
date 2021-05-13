@@ -21,6 +21,6 @@ Viewing party is an application in which users can explore movie options and cre
 
 ## Schema
 
-![db schema](https://i.imgur.com/hMb7LfM.png)
+![db schema](https://i.imgur.com/rFVWCga.png)
 
 Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
