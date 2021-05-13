@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   def new
     if current_user
-      @user = current_user
-      render :show
+      redirect_to dashboard_path
     else
       @user = User.new
     end

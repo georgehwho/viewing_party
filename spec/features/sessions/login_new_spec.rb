@@ -23,19 +23,35 @@ describe 'Sessions New Page' do
   end
 
   context 'You try to login' do
-    before {
-      visit root_path
-    }
+    let(:user) { create(:random_user) }
+    before { visit root_path }
 
-    it 'Happy Path: Correct login redirects to dashboard' do
-      user = User.create!(email: "edgelord9000@test.com", password: "lmaonnaise")
+    context 'Happy Path: Correct Login' do
+      before {
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        click_on "Sign In"
+      }
 
-      fill_in 'email', with: user.email
-      fill_in 'password', with: user.password
-      click_on "Sign In"
+      it 'Redirects to dashboard' do
+        expect(current_path).to eq(dashboard_path)
+        expect(page).to have_content("Welcome #{user.email}!")
+      end
 
-      expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("Welcome #{user.email}!")
+      it 'Redirects to dashboard if you go to root' do
+        visit root_path
+        expect(current_path).to eq(dashboard_path)
+      end
+
+      it 'Redirects to dashboard if you go to /signup' do
+        visit signup_path
+        expect(current_path).to eq(dashboard_path)
+      end
+
+      it 'Redirects to dashboard if you go to /login' do
+        visit login_path
+        expect(current_path).to eq(dashboard_path)
+      end
     end
 
     it 'Sad Path: Empty form submission flashes error' do
@@ -46,8 +62,6 @@ describe 'Sessions New Page' do
     end
 
     it 'Sad Path: Incorrect login flashes error' do
-      user = create(:random_user)
-
       fill_in 'email', with: user.email
       fill_in 'password', with: 'wrong password'
       click_on "Sign In"
