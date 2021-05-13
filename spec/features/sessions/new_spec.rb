@@ -5,6 +5,7 @@ describe 'Sessions New Page' do
     before {
       visit root_path
     }
+
     it 'Welcomes you to the site' do
       expect(page).to have_content("Welcome to The Viewing Party")
     end
@@ -19,14 +20,14 @@ describe 'Sessions New Page' do
     it 'Has a link to register for the application' do
       expect(page).to have_link("New to Viewing Party? Register Here")
     end
+  end
 
-    it 'Has a sad path for when email or password is incorrect' do
-      click_on "Sign In"
+  context 'You try to login' do
+    before {
+      visit root_path
+    }
 
-      expect(page).to have_content('Your email or password are incorrect')
-    end
-
-    it 'Redirects user to dashboard upon appropriate sign-in' do
+    it 'Happy Path: Correct login redirects to dashboard' do
       user = User.create!(email: "edgelord9000@test.com", password: "lmaonnaise")
 
       fill_in 'email', with: user.email
@@ -34,8 +35,25 @@ describe 'Sessions New Page' do
       click_on "Sign In"
 
       expect(current_path).to eq(dashboard_path)
-
       expect(page).to have_content("Welcome #{user.email}!")
+    end
+
+    it 'Sad Path: Empty form submission flashes error' do
+      click_on "Sign In"
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content('Your email or password are incorrect')
+    end
+
+    it 'Sad Path: Incorrect login flashes error' do
+      user = create(:random_user)
+
+      fill_in 'email', with: user.email
+      fill_in 'password', with: 'wrong password'
+      click_on "Sign In"
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content('Your email or password are incorrect')
     end
   end
 end
