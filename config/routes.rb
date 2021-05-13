@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:index, :show]
   get '/discover', to: 'movies#discover'
+
+  resources :viewing_party, only: [:new, :create]
 end
