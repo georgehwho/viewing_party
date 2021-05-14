@@ -16,4 +16,19 @@ class MovieService
 
     first_half[:results] + second_half[:results]
   end
+
+  def find_movie(movie_id)
+    resp = conn.get("movie/#{movie_id}?api_key=#{@api_key}")
+    JSON.parse(resp.body, symbolize_names: true)
+  end
+
+  def find_movie_review(movie_id)
+    resp = conn.get("movie/#{movie_id}/reviews?api_key=#{@api_key}")
+    JSON.parse(resp.body, symbolize_names: true)
+  end
+
+  def find_movie_credits(movie_id)
+    resp = conn.get("movie/#{movie_id}/credits?api_key=#{@api_key}")
+    JSON.parse(resp.body, symbolize_names: true)
+  end
 end
