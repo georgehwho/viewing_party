@@ -3,3 +3,29 @@
 <p>insert button to create viewing party</p>
 
 <p>insert movie details below</p>
+<h1>
+ <%= @movie[:title] %>
+</h1>
+<p>Vote Average: <%= @movie[:vote_average] %></p>
+<p>Runtime: <%= @movie[:runtime] %></p>
+
+<p>
+  Genre(s):
+  <% @movie[:genres].each do |genre| %>
+    <%= genre[:name] %>
+  <% end %>
+</p>
+
+<h2>Summary</h2>
+<%= @movie[:overview] %>
+
+<h2>Cast</h2>
+<% @cast.each do |member| %>
+  <p><%= member[:name] %> as <%= member[:character] %></p>
+<% end %>
+
+<h2><%= @reviews.count %> Reviews</h2>
+<% @reviews.each do |review| %>
+  <h3>Author: <%= review[:author] %></h3>
+  <%= review[:content] %>
+<% end %>
