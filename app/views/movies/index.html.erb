@@ -3,3 +3,7 @@
 <p>insert search bar here</p>
 
 <p>insert list of movies based off of a movies api call</p>
+
+<% @movies.each do |movie| %>
+  <p><%= link_to movie[:title], movie_path(movie) %> Vote Average: <%= movie[:vote_average] %></p>
+<% end %>

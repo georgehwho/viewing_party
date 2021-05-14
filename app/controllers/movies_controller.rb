@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-
+    @movies = MovieService.new(ENV['themoviesdb_key']).all_movies
   end
 
   def show
