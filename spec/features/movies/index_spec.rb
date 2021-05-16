@@ -11,7 +11,7 @@ describe 'Movie Index Page' do
     }
 
     it 'loads the top 40 movies by default' do
-      VCR.use_cassette('default movies', :record => :new_episodes) do
+      VCR.use_cassette('default movies', :record => :once) do
         visit movies_path
 
         expect(page).to have_content("Dilwale Dulhania Le Jayenge")
@@ -20,7 +20,7 @@ describe 'Movie Index Page' do
     end
 
     it 'allows you to search for movies from the default page' do
-      VCR.use_cassette('phoenix movies', :record => :new_episodes) do
+      VCR.use_cassette('phoenix movies', :record => :once) do
         visit movies_path
 
         fill_in 'q', with: 'phoenix'

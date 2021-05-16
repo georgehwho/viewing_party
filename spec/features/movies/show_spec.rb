@@ -9,7 +9,7 @@ describe 'Movie Show Page' do
     }
 
     it 'Shows the correct movie Dilwale Dulhania Le Jayenge and the movie details' do
-      VCR.use_cassette('movie detail dilwale', :record => :new_episodes) do
+      VCR.use_cassette('movie detail dilwale', :record => :once) do
         visit movies_path
 
         click_on "Dilwale Dulhania Le Jayenge"

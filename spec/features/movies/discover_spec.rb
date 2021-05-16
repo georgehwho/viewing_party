@@ -22,7 +22,7 @@ describe 'Discover Movies Page' do
       end
 
       it 'searches for movies correctly' do
-        VCR.use_cassette('movie search', :record => :new_episodes) do
+        VCR.use_cassette('movie search', :record => :once) do
           fill_in 'q', with: 'phoenix'
           click_on 'Find Movies'
 
