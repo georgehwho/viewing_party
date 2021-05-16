@@ -16,5 +16,15 @@ describe 'Movie Index Page' do
       expect(page).to have_content("Dilwale Dulhania Le Jayenge")
       expect(page).to have_content("City of God")
     end
+
+    it 'allows you to search for movies from the default page', :vcr do
+      visit movies_path
+
+      fill_in 'q', with: 'phoenix'
+      click_on 'Find Movies'
+
+      expect(page).to have_content("Dark Phoenix")
+      expect(page).to have_content("Deep Purple: Phoenix Rising")
+    end
   end
 end
