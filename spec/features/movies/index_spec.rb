@@ -10,21 +10,25 @@ describe 'Movie Index Page' do
       click_on "Sign In"
     }
 
-    it 'loads the top 40 movies by default', :vcr do
-      visit movies_path
+    it 'loads the top 40 movies by default' do
+      VCR.use_cassette('default movies', :record => :new_episodes) do
+        visit movies_path
 
-      expect(page).to have_content("Dilwale Dulhania Le Jayenge")
-      expect(page).to have_content("City of God")
+        expect(page).to have_content("Dilwale Dulhania Le Jayenge")
+        expect(page).to have_content("City of God")
+      end
     end
 
-    it 'allows you to search for movies from the default page', :vcr do
-      visit movies_path
+    it 'allows you to search for movies from the default page' do
+      VCR.use_cassette('phoenix movies', :record => :new_episodes) do
+        visit movies_path
 
-      fill_in 'q', with: 'phoenix'
-      click_on 'Find Movies'
+        fill_in 'q', with: 'phoenix'
+        click_on 'Find Movies'
 
-      expect(page).to have_content("Dark Phoenix")
-      expect(page).to have_content("Deep Purple: Phoenix Rising")
+        expect(page).to have_content("Dark Phoenix")
+        expect(page).to have_content("Deep Purple: Phoenix Rising")
+      end
     end
   end
 end
