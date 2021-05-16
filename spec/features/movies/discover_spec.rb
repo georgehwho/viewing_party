@@ -17,8 +17,16 @@ describe 'Discover Movies Page' do
       end
 
       it 'has a search bar that lets you find movies' do
-        expect(page).to have_field("movie_title")
+        expect(page).to have_field("q")
         expect(page).to have_button("Find Movies")
+      end
+
+      it 'searches for movies correctly', :vcr do
+        fill_in 'q', with: 'phoenix'
+        click_on 'Find Movies'
+
+        expect(page).to have_content("Dark Phoenix")
+        expect(page).to have_content("Deep Purple: Phoenix Rising")
       end
     end
   end
