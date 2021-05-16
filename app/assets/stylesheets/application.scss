@@ -44,3 +44,37 @@ footer {
   width: fit-content;
   padding: 5px;
 }
+
+.movie_detail {
+  .header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .details {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+.movies_page {
+  .header {
+    display: flex;
+    justify-content: space-around;
+  }
+  .movies {
+    width: 80%;
+    padding-left: 130px;
+  }
+
+  .movie {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.discover_page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
