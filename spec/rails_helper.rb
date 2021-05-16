@@ -78,9 +78,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<DONT_SHARE_MY_THEMOVIESDB_KEY>') { ENV['themoviesdb_key'] }
   config.configure_rspec_metadata!
   config.default_cassette_options = {
-    re_record_interval: 7.days,
-    :match_requests_on => [:method,
-      VCR.request_matchers.uri_without_param(:url)]
+    re_record_interval: 7.days
   }
 
 end
