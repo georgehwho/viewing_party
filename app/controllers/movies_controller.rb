@@ -9,7 +9,6 @@ class MoviesController < ApplicationController
       @movies = movie_service.all_movies
     else
       @movies = movie_service.find_movies(params[:q])
-      # binding.pry
     end
   end
 
