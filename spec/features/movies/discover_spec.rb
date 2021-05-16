@@ -21,12 +21,14 @@ describe 'Discover Movies Page' do
         expect(page).to have_button("Find Movies")
       end
 
-      it 'searches for movies correctly', :vcr, record: :new_episodes do
-        fill_in 'q', with: 'phoenix'
-        click_on 'Find Movies'
+      it 'searches for movies correctly'do
+        VCR.use_cassette('movie search', :record => :new_episodes) do
+          fill_in 'q', with: 'phoenix'
+          click_on 'Find Movies'
 
-        expect(page).to have_content("Dark Phoenix")
-        expect(page).to have_content("Deep Purple: Phoenix Rising")
+          expect(page).to have_content("Dark Phoenix")
+          expect(page).to have_content("Deep Purple: Phoenix Rising")
+        end
       end
     end
   end
