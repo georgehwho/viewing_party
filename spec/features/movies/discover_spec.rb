@@ -21,7 +21,7 @@ describe 'Discover Movies Page' do
         expect(page).to have_button("Find Movies")
       end
 
-      it 'searches for movies correctly', :vcr do
+      it 'searches for movies correctly', :vcr, record: :new_episodes do
         fill_in 'q', with: 'phoenix'
         click_on 'Find Movies'
 
