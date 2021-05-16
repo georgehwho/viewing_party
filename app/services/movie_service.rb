@@ -31,4 +31,14 @@ class MovieService
     resp = conn.get("movie/#{movie_id}/credits?api_key=#{@api_key}")
     JSON.parse(resp.body, symbolize_names: true)
   end
+
+  def find_movies(search)
+    first_resp = conn.get("search/movie?api_key=#{@api_key}&query=#{search}&page=1")
+    second_resp = conn.get("search/movie?api_key=#{@api_key}&query=#{search}&page=2")
+
+    first_half = JSON.parse(first_resp.body, symbolize_names: true)
+    second_half = JSON.parse(second_resp.body, symbolize_names: true)
+
+    first_half[:results] + second_half[:results]
+  end
 end

@@ -4,7 +4,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = MovieService.new(ENV['themoviesdb_key']).all_movies
+    movie_service = MovieService.new(ENV['themoviesdb_key'])
+    if params[:q] == nil
+      @movies = movie_service.all_movies
+    else
+      @movies = movie_service.find_movies(params[:q])
+      # binding.pry
+    end
   end
 
   def show
