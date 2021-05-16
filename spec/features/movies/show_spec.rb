@@ -15,6 +15,7 @@ describe 'Movie Show Page' do
       click_on "Dilwale Dulhania Le Jayenge"
 
       expect(current_path).to eq("/movies/19404")
+      expect(page).to have_button("Create Viewing Party for Movie")
 
       expect(page).to have_content("Dilwale Dulhania Le Jayenge")
 
