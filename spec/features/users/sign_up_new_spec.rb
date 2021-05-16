@@ -40,5 +40,10 @@ describe 'New User Sign Up Page' do
       expect(page).to have_content("Welcome #{new_user.email}!")
       expect(new_user.email).to eq('kon@test.com')
     end
+
+    it 'fails to register for an account' do
+      click_on 'Register'
+      expect(current_path).to eq('/signup')
+    end
   end
 end
