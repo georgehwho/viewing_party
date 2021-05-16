@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 ruby '2.5.3'
+gem 'figaro'
 
 gem 'rails', '= 5.2.5'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -18,7 +19,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'json'
 gem 'bcrypt'
-gem 'figaro'
 
 group :development, :test do
   gem 'factory_bot_rails'
