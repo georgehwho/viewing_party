@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 ruby '2.5.3'
+gem 'figaro'
 
 gem 'rails', '= 5.2.5'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -15,8 +16,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'bootsnap'
 gem 'jbuilder', '~> 2.5'
+gem 'faraday'
+gem 'json'
+gem 'bcrypt'
 
 group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry'
   gem 'travis'
 end
@@ -35,13 +41,8 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'factory_bot_rails'
-gem 'faker'
-gem 'faraday'
-gem 'json'
-gem 'bcrypt'
-gem 'figaro'

@@ -1,5 +1,20 @@
-<%= button_to "Find Top Rated Movies", movies_path, method: :get %>
+<div class="movies_page">
+  <div class="header">
+    <%= button_to "Find Top Rated Movies", movies_path, method: :get %>
 
-<p>insert search bar here</p>
+    <%= form_with url: movies_path, local: true, method: :get do |form| %>
+      <%= form.label :q, 'Search by movie title:' %>
+      <%= form.text_field :q %>
+      <%= form.submit 'Find Movies' %>
+    <% end %>
+  </div>
 
-<p>insert list of movies based off of a movies api call</p>
+  <div class="movies">
+    <% @movies.each do |movie| %>
+      <div class='movie'>
+        <p><%= link_to movie[:title], movie_path(movie[:id]) %></p>
+        <p>Vote Average: <%= movie[:vote_average] %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

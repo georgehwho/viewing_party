@@ -1,5 +1,11 @@
-<%= button_to "Find Top Rated Movies", movies_path, method: :get %>
+<div class="discover_page">
+  <%= button_to "Find Top Rated Movies", movies_path, method: :get%>
 
-<h2>OR</h2>
+  <h2>OR</h2>
 
-<p>insert search bar here</p>
+  <%= form_with url: movies_path, local: true, method: :get do |form| %>
+    <%= form.label :q, 'Search by movie title:' %>
+    <%= form.text_field :q %>
+    <%= form.submit 'Find Movies' %>
+  <% end %>
+</div>
