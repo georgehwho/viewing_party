@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <header class='container'>
+      <% if current_user.present? %>
+        <h1>Welcome <%= current_user.email %>!</h1>
+      <% end %>
+    </header>
     <main>
       <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
