@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get '/discover', to: 'movies#discover'
 
   resources :viewing_party, only: [:new, :create]
+
+  post '/add_friend', to: 'friends#create'
 end

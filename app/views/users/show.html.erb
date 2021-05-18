@@ -1,5 +1,18 @@
-<%= button_to "Discover Movies", discover_path, method: :get %>
+<div class='container'>
+  <%= button_to "Discover Movies", discover_path, method: :get %>
+</div>
 
-<p>insert friends section</p>
+<div class='friend-container'>
+  <h2>Friends</h2>
+  <div class='line'></div>
+  <%= form_with url: add_friend_path,local: true do |f|%>
+    <%= f.label "Friend's email" %>
+    <%= f.text_field :email %>
+    <%= f.submit "Add Friend" %>
+  <% end %>
+</div>
 
-<p>insert viewing parties hosted and invited</p>
+<div class='party-container'>
+  <h2>Viewing Parties</h2>
+  <div class='line'></div>
+</div>
