@@ -11,25 +11,8 @@ describe 'Movie Show Page' do
     }
 
     it 'Shows the correct movie Dilwale Dulhania Le Jayenge and the movie details' do
-      json_response_movies_one = File.read('spec/fixtures/top_rated_page_one.json')
-      stub_request(:get, "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['themoviesdb_key']}&page=1").
-          to_return(status: 200, body: json_response_movies_one, headers: {})
-
-      json_response_movies_two = File.read('spec/fixtures/top_rated_page_two.json')
-      stub_request(:get, "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['themoviesdb_key']}&page=2").
-        to_return(status: 200, body: json_response_movies_two, headers: {})
-
-      json_response_movie_details = File.read('spec/fixtures/dilwale.json')
-      stub_request(:get, "https://api.themoviedb.org/3/movie/19404?api_key=#{ENV['themoviesdb_key']}").
-          to_return(status: 200, body: json_response_movie_details, headers: {})
-
-      json_response_movie_credits = File.read('spec/fixtures/dilwale_credits.json')
-      stub_request(:get, "https://api.themoviedb.org/3/movie/19404/credits?api_key=#{ENV['themoviesdb_key']}").
-          to_return(status: 200, body: json_response_movie_credits, headers: {})
-
-      json_response_movie_reviews = File.read('spec/fixtures/dilwale_reviews.json')
-      stub_request(:get, "https://api.themoviedb.org/3/movie/19404/reviews?api_key=#{ENV['themoviesdb_key']}").
-          to_return(status: 200, body: json_response_movie_reviews, headers: {})
+      stub_top_40_movies
+      stub_dilwale_dulhania
 
       visit movies_path
 

@@ -22,13 +22,7 @@ describe 'Discover Movies Page' do
       end
 
       it 'searches for movies correctly' do
-        json_response_one = File.read('spec/fixtures/phoenix_search_one.json')
-        stub_request(:get, "https://api.themoviedb.org/3/search/movie?api_key=#{ENV['themoviesdb_key']}&query=phoenix&page=1").
-           to_return(status: 200, body: json_response_one, headers: {})
-
-        json_response_two = File.read('spec/fixtures/phoenix_search_two.json')
-           stub_request(:get, "https://api.themoviedb.org/3/search/movie?api_key=#{ENV['themoviesdb_key']}&query=phoenix&page=2").
-              to_return(status: 200, body: json_response_two, headers: {})
+        stub_find_movies_phoenix
 
         fill_in 'q', with: 'phoenix'
         click_on 'Find Movies'

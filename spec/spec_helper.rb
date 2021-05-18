@@ -97,3 +97,37 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def stub_top_40_movies
+  json_response_one = File.read('spec/fixtures/top_rated_page_one.json')
+  stub_request(:get, "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['themoviesdb_key']}&page=1").
+    to_return(status: 200, body: json_response_one, headers: {})
+
+  json_response_two = File.read('spec/fixtures/top_rated_page_two.json')
+  stub_request(:get, "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['themoviesdb_key']}&page=2").
+    to_return(status: 200, body: json_response_two, headers: {})
+end
+
+def stub_find_movies_phoenix
+  json_response_one = File.read('spec/fixtures/phoenix_search_one.json')
+  stub_request(:get, "https://api.themoviedb.org/3/search/movie?api_key=#{ENV['themoviesdb_key']}&page=1&query=phoenix").
+    to_return(status: 200, body: json_response_one, headers: {})
+
+  json_response_two = File.read('spec/fixtures/phoenix_search_two.json')
+  stub_request(:get, "https://api.themoviedb.org/3/search/movie?api_key=#{ENV['themoviesdb_key']}&page=2&query=phoenix").
+    to_return(status: 200, body: json_response_two, headers: {})
+end
+
+def stub_dilwale_dulhania
+  json_response_movie_details = File.read('spec/fixtures/dilwale.json')
+  stub_request(:get, "https://api.themoviedb.org/3/movie/19404?api_key=#{ENV['themoviesdb_key']}").
+    to_return(status: 200, body: json_response_movie_details, headers: {})
+
+  json_response_movie_credits = File.read('spec/fixtures/dilwale_credits.json')
+  stub_request(:get, "https://api.themoviedb.org/3/movie/19404/credits?api_key=#{ENV['themoviesdb_key']}").
+    to_return(status: 200, body: json_response_movie_credits, headers: {})
+
+  json_response_movie_reviews = File.read('spec/fixtures/dilwale_reviews.json')
+  stub_request(:get, "https://api.themoviedb.org/3/movie/19404/reviews?api_key=#{ENV['themoviesdb_key']}").
+    to_return(status: 200, body: json_response_movie_reviews, headers: {})
+end
