@@ -3,6 +3,7 @@ class Party < ApplicationRecord
   validates :duration, presence: true
   validates :date, presence: true
   validates :start_time, presence: true
+  validates :movie_id, presence: true
 
   belongs_to :host, class_name: :User
 
