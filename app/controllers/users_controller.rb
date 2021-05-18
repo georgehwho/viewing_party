@@ -17,12 +17,14 @@ class UsersController < ApplicationController
       session[:user_id] = new_user.id
       redirect_to dashboard_path
     else
+      flash[:error] = 'Email may be taken or in the incorrect format or passwords do not match'
       redirect_to '/signup'
     end
   end
 
   def show
     @user = User.find(session[:user_id])
+    @friend = User.new
   end
 
   private
