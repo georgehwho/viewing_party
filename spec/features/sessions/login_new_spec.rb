@@ -7,8 +7,8 @@ describe 'Sessions New Page' do
     it 'Loads the default page' do
       expect(page).to have_content("Welcome to The Viewing Party")
       expect(page).to have_content("An application to explore movies and create a viewing party event for you and your friends to watch a movie together.")
-      expect(page).to have_field("email")
-      expect(page).to have_field("password")
+      expect(page).to have_field("user[email]")
+      expect(page).to have_field("user[password]")
       expect(page).to have_button("Sign In")
       expect(page).to have_link("New to Viewing Party? Register Here")
     end
@@ -18,8 +18,8 @@ describe 'Sessions New Page' do
 
       context 'Happy Path: Correct Login' do
         before {
-          fill_in 'email', with: user.email
-          fill_in 'password', with: user.password
+          fill_in 'user[email]', with: user.email
+          fill_in 'user[password]', with: user.password
           click_on "Sign In"
         }
 
@@ -53,8 +53,8 @@ describe 'Sessions New Page' do
         end
 
         it 'Incorrect login flashes error' do
-          fill_in 'email', with: user.email
-          fill_in 'password', with: 'wrong password'
+          fill_in 'user[email]', with: user.email
+          fill_in 'user[password]', with: 'wrong password'
           click_on "Sign In"
 
           expect(current_path).to eq(login_path)

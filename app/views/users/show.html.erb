@@ -5,7 +5,7 @@
 <div class='friend-container'>
   <h2>Friends</h2>
   <div class='line'></div>
-  <%= form_with url: add_friend_path,local: true do |f|%>
+  <%= form_with model: @friend, url: add_friend_path,local: true do |f|%>
     <%= f.label "Friend's email" %>
     <%= f.text_field :email %>
     <%= f.submit "Add Friend" %>

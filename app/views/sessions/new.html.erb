@@ -3,7 +3,7 @@
 
   <p>An application to explore movies and create a viewing party event for you and your friends to watch a movie together.</p>
 
-  <%= form_with url: login_path, method: :post, local: true do |form| %>
+  <%= form_with model: @user, url: login_path, method: :post, local: true do |form| %>
     <div class="form_container">
       <%= form.label :email %>
       <%= form.text_field :email %>

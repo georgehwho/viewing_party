@@ -3,17 +3,25 @@ class SessionsController < ApplicationController
 
   def new
     redirect_to dashboard_path if current_user
+    @user = User.new
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    credentials = user_params
+    user = User.find_by(email: credentials[:email])
 
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(credentials[:password])
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
       flash[:error] = 'Your email or password are incorrect'
       render :new
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end

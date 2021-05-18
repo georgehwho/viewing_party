@@ -5,8 +5,8 @@ describe 'Movie Show Page' do
     before {
       user = create(:random_user)
       visit root_path
-      fill_in 'email', with: user.email
-      fill_in 'password', with: user.password
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
       click_on "Sign In"
     }
 
