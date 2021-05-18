@@ -70,6 +70,10 @@ footer {
   .movie {
     display: flex;
     justify-content: space-between;
+
+    &:hover {
+      opacity: 50%;
+    }
   }
 }
 
