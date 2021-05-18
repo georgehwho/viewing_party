@@ -9,6 +9,7 @@
     <% end %>
   </div>
 
+  <% if @movies.present? %>
   <div class="movies">
     <% @movies.each do |movie| %>
       <div class='movie'>
@@ -17,4 +18,9 @@
       </div>
     <% end %>
   </div>
+  <% else %>
+    <div class='container'>
+      <h1>Bad Search</h1>
+    </div>
+  <% end %>
 </div>

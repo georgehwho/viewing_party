@@ -4,8 +4,10 @@ class MoviesController < ApplicationController
   def index
     if params[:q].nil?
       @movies = MovieFacade.top_40_movies
-    else
+    elsif params[:q].present?
       @movies = MovieFacade.find_movies(params[:q])
+    else
+      @movies = []
     end
   end
 

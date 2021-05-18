@@ -30,6 +30,12 @@ describe 'Discover Movies Page' do
         expect(page).to have_content("Dark Phoenix")
         expect(page).to have_content("Deep Purple: Phoenix Rising")
       end
+
+      it 'returns an error message if search is blank' do
+        click_on 'Find Movies'
+
+        expect(page).to have_content("Bad Search")
+      end
     end
   end
 end
