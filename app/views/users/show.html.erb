@@ -5,11 +5,23 @@
 <div class='friend-container'>
   <h2>Friends</h2>
   <div class='line'></div>
-  <%= form_with model: @friend, url: add_friend_path,local: true do |f|%>
-    <%= f.label "Friend's email" %>
-    <%= f.text_field :email %>
-    <%= f.submit "Add Friend" %>
-  <% end %>
+  <div class='add-friend-form'>
+    <%= form_with model: @friend, url: add_friend_path(current_user), local: true do |f|%>
+      <%= f.label "Friend's email" %>
+      <%= f.text_field :email %>
+      <%= f.submit "Add Friend" %>
+    <% end %>
+  </div>
+
+  <div class='friend-list'>
+    <% if @friends.present? %>
+      <% @friends.each do |friend| %>
+        <p><%= friend.email %></p>
+      <% end %>
+    <% else %>
+      <p>You currently have no friends</p>
+    <% end %>
+  </div>
 </div>
 
 <div class='party-container'>
