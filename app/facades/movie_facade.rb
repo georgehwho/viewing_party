@@ -1,7 +1,7 @@
 class MovieFacade
   def self.top_40_movies
-    movies = MovieService.request_api("movie/top_rated?page=1")[:results]
-    movies + MovieService.request_api("movie/top_rated?page=2")[:results]
+    movies = MovieService.request_api('movie/top_rated?page=1')[:results]
+    movies + MovieService.request_api('movie/top_rated?page=2')[:results]
   end
 
   def self.find_movies(query)
