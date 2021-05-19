@@ -5,7 +5,8 @@ class Movie
               :genres,
               :overview,
               :cast,
-              :reviews
+              :reviews,
+              :id
 
   def initialize(movie, cast, reviews)
     @title = movie[:title]
@@ -15,5 +16,6 @@ class Movie
     @overview = movie[:overview]
     @cast = cast
     @reviews = reviews
+    @id = movie[:id]
   end
 end

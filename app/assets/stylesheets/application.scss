@@ -55,6 +55,29 @@ footer {
     display: flex;
     justify-content: space-evenly;
   }
+
+  .summary {
+    padding: 0px 40px;
+  }
+
+  .cast {
+    list-style: none;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 50%;
+    }
+  }
+
+  .reviews {
+    padding: 0px 40px;
+    .content {
+      border: 1px solid black;
+      padding: 0px 10px;
+      margin: 10px 0px;
+    }
+  }
 }
 
 .movies_page {
@@ -98,3 +121,29 @@ footer {
   // }
 }
 
+.viewing-party-form {
+  border: 1px solid black;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 30px 30px;
+
+  h2, h3 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .details {
+    div {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0px;
+    }
+    .submit {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

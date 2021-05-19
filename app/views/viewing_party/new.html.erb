@@ -1,1 +1,44 @@
-<p>viewing party create screen</p>
+<div class='container'>
+  <div class='viewing-party-form'>
+      <h2>Viewing Party Details</h2>
+      <%= form_with model: @party, url: viewing_party_index_path(current_user), local: true do |f| %>
+        <div class='details'>
+          <%= f.hidden_field 'title', value: @title %>
+          <%= f.hidden_field 'movie_id', value: @movie_id %>
+
+          <div>
+            <%= f.label 'Movie Title' %>
+            <%= @title %>
+          </div>
+
+          <div>
+            <%= f.label 'Duration of Party' %>
+            <%= f.number_field 'duration', value: @duration, min: @duration %>
+          </div>
+
+          <div>
+            <%= f.label 'Date' %>
+            <%= f.date_field 'date', required: true %>
+          </div>
+
+          <div>
+            <%= f.label 'Start Time' %>
+            <%= f.time_field 'start_time', required: true %>
+          </div>
+
+          <h3>Include</h3>
+
+          <div>
+            <% @friends.each do |friend| %>
+              <%= check_box("friend", friend.id)%>
+              <%= friend.email %>
+            <% end %>
+          </div>
+
+          <div class='submit'>
+            <%= f.submit 'Create Party' %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
