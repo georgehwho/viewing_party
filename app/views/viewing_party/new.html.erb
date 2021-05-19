@@ -23,17 +23,19 @@
 
           <div>
             <%= f.label 'Start Time' %>
-            <%= f.time_field 'start_time', required: true %>
+            <%= f.time_field 'start_time', required: true, :ignore_date => true %>
           </div>
 
-          <h3>Include</h3>
+          <% if @friends.present? %>
+            <h3>Include</h3>
 
-          <div>
-            <% @friends.each do |friend| %>
-              <%= check_box("friend", friend.id)%>
-              <%= friend.email %>
-            <% end %>
-          </div>
+            <div>
+              <% @friends.each do |friend| %>
+                <%= check_box("friend", friend.id)%>
+                <%= friend.email %>
+              <% end %>
+            </div>
+          <% end %>
 
           <div class='submit'>
             <%= f.submit 'Create Party' %>

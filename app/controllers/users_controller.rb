@@ -23,9 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
     @friend = User.new
-    @friends = @user.friends
   end
 
   private

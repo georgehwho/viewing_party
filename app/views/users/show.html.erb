@@ -14,8 +14,8 @@
   </div>
 
   <div class='friend-list'>
-    <% if @friends.present? %>
-      <% @friends.each do |friend| %>
+    <% if current_user.friends.present? %>
+      <% current_user.friends.each do |friend| %>
         <p><%= friend.email %></p>
       <% end %>
     <% else %>
@@ -27,4 +27,23 @@
 <div class='party-container'>
   <h2>Viewing Parties</h2>
   <div class='line'></div>
+  <div class='parties'>
+    <% current_user.parties.each do |party| %>
+      <div class='party'>
+        <p><%= party.title %></p>
+        <p><%= party.date.strftime("%B %d, %Y") %></p>
+        <p><%= party.start_time.strftime("%l:%M %p") %></p>
+        <p>Hosting</p>
+      </div>
+    <% end %>
+
+    <% current_user.invited_parties.each do |party| %>
+      <div class='party'>
+        <p><%= party.title %></p>
+        <p><%= party.date.strftime("%B %d, %Y") %></p>
+        <p><%= party.start_time.strftime("%l:%M %p") %></p>
+        <p>Invited</p>
+      </div>
+    <% end %>
+  </div>
 </div>
