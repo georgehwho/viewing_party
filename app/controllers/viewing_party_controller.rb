@@ -25,7 +25,7 @@ class ViewingPartyController < ApplicationController
   def invite_guests(party)
     guests = friend_params.select { |k,v| v == '1' }
     guests.each do |k,v|
-      PartyGuest.create!(party_id: party.id, guest_id: k.to_i)
+      PartyGuest.create(party_id: party.id, guest_id: k.to_i)
     end
   end
 
